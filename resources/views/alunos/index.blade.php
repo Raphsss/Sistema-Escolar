@@ -19,7 +19,7 @@
             </tr>
             @foreach ($alunos as $aluno)
                 <tr>
-                    <td>{{ $aluno->nome }}</td>
+                    <td><a href="{{ route('alunos.show', $aluno->id) }}">{{  $aluno->nome }}</a></td>
                     <td>{{ $aluno->ra }}</td>
                     <td>{{ $aluno->curso }}</td>
                     <td><a href="{{ route('alunos.edit', $aluno->id) }}">Atualizar</a></td>

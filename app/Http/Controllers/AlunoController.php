@@ -47,11 +47,13 @@ class AlunoController extends Controller
         return redirect()->route('alunos.index');
     }
     /**s
-     * Display the specified resource.r
+     * Display the specified resource.
      */
     public function show(string $id)
     {
-        //
+        $aluno = Aluno::find($id);
+
+        return view('alunos.show')->with('aluno', $aluno);
     }
 
     /**
