@@ -1,7 +1,7 @@
 <aside class="flex flex-col h-screen w-64 bg-gray-950 text-gray-200 border-r border-gray-800">
     <!-- Logo / título -->
     <div class="px-6 py-5 text-xl font-semibold tracking-wide border-b border-gray-800">
-        📚 SisBiblioteca
+        SisBiblioteca
     </div>
 
     <!-- Menu -->

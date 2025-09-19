@@ -7,10 +7,10 @@
     <title>@yield('title')</title>
     <script src="https://cdn.tailwindcss.com"></script>
 </head>
-<body class="bg-gray-100">
+<body class="bg-gray-950 text-gray-100">
     <div class="flex min-h-screen">
         @include('includes.sidebar')
-        <main class="flex-1 p-8">
+        <main class="flex-1 p-8 bg-gray-900">
             @yield('content')
         </main>
     </div>
