@@ -1,6 +1,6 @@
 # Biblioteca App
 
-Pequena biblioteca usando laravel.
+ Projeto simples de CRUD para treinar Laravel.
 
 ## Requisitos
 
@@ -42,7 +42,7 @@ Pequena biblioteca usando laravel.
     php artisan key:generate
     ```
 
-7. Execute as migrações para criar as tabelas no banco de dados:
+7. Execute as migrations para criar as tabelas no banco de dados:
     ```bash
     php artisan migrate
     ```
