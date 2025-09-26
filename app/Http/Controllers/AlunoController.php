@@ -83,6 +83,12 @@ class AlunoController extends Controller
         $aluno->ra = $request->input('ra');
         $aluno->curso = $request->input('curso');
 
+        $validated = $request->validate([
+            'nome' => 'required|min:3|max:255',
+            'ra' => 'required|min:3|max:8',
+            'curso' => 'required|min:3|max:255',
+        ]);
+
         try {
             $aluno->save();
         } catch (Exception $e) {
