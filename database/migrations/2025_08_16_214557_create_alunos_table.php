@@ -13,10 +13,14 @@ return new class extends Migration
     {
         Schema::create('alunos', function (Blueprint $table) {
             $table->id();
+            $table->string('nome', 100);
+            $table->string('ra', 20)->unique();
+            $table->string('email', 100)->unique();
+            $table->date('data_nascimento')->nullable();
+            $table->string('curso', 100);
+            $table->enum('sexo', ['Masculino', 'Feminino'])->nullable();
+            $table->string('telefone', 20)->nullable();
             $table->timestamps();
-            $table->string('nome');
-            $table->string('ra');
-            $table->string('curso');
         });
     }
 

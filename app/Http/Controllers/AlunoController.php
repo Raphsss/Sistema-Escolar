@@ -34,16 +34,22 @@ class AlunoController extends Controller
     {
         $aluno = new Aluno();
 
+        $aluno->nome = $request->input('nome');
+        $aluno->ra = $request->input('ra');
+        $aluno->email = $request->input('email');
+        $aluno->data_nascimento = $request->input('data_nascimento');
+        $aluno->curso = $request->input('curso');
+        $aluno->sexo = $request->input('sexo');
+        $aluno->telefone = $request->input('telefone');
+
+
         $validated = $request->validate([
             'nome' => 'required|min:3|max:255',
             'ra' => 'required|min:3|max:8',
             'curso' => 'required|min:3|max:255',
         ]);
 
-        $aluno->nome = $request->input('nome');
-        $aluno->ra = $request->input('ra');
-        $aluno->curso = $request->input('curso');
-
+        
         try {
             $aluno->save();
         } catch (Exception $e) {
@@ -81,7 +87,11 @@ class AlunoController extends Controller
 
         $aluno->nome = $request->input('nome');
         $aluno->ra = $request->input('ra');
+        $aluno->email = $request->input('email');
+        $aluno->data_nascimento = $request->input('data_nascimento');
         $aluno->curso = $request->input('curso');
+        $aluno->sexo = $request->input('sexo');
+        $aluno->telefone = $request->input('telefone');
 
         $validated = $request->validate([
             'nome' => 'required|min:3|max:255',

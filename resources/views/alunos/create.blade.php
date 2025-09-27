@@ -12,9 +12,17 @@
 
         <x-form-input label="RA" name="ra" placeholder="RA" :error="$errors->first('ra')" />
 
+        <x-form-input label="E-mail" name="email" placeholder="email" :error="$errors->first('email')" />
+
+        <x-form-input label="Data nascimento" name="data_nascimento" placeholder="Data Nascimento" :error="$errors->first('data_nascimento')" />
+
         <x-form-input label="Curso" name="curso" placeholder="Curso" :error="$errors->first('curso')" />
-        <button type="submit"
-            class="w-full py-2 rounded-lg bg-blue-600 text-white font-semibold hover:bg-blue-700 transition">Cadastrar</button>
+
+        <x-form-input label="Sexo" name="sexo" placeholder="sexo" :error="$errors->first('sexo')" />
+
+        <x-form-input label="Telefone" name="Telefone" placeholder="Telefone" :error="$errors->first('Telefone')" />
+
+        <x-button>Salvar</x-button>
     </form>
 
 @endsection

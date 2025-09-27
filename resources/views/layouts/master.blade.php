@@ -10,7 +10,7 @@
 <body class="bg-gray-950 text-gray-100">
     <div class="flex min-h-screen">
         @include('includes.sidebar')
-        <main class="flex-1 p-8 bg-gray-900">
+        <main class="flex-1 p-8 bg-gray-900 ml-64 overflow-y-auto h-screen">
             @yield('content')
         </main>
     </div>
