@@ -16,7 +16,7 @@
 
         <x-form-input label="Data nascimento" name="data_nascimento" placeholder="Data Nascimento" :error="$errors->first('data_nascimento')" />
 
-        <x-form-input label="Curso" name="curso" placeholder="Curso" :error="$errors->first('curso')" />
+        <x-form-select label="Curso" name="curso_id" :options="$cursos" :error="$errors->first('curso_id')" />
 
         <x-form-input label="Sexo" name="sexo" placeholder="sexo" :error="$errors->first('sexo')" />
 

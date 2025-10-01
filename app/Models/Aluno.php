@@ -9,6 +9,6 @@ use Illuminate\Http\Client\Request;
 class Aluno extends Model
 {
     use HasFactory;
-    protected $fillable = ['name', 'ra', 'curso'];
+    protected $fillable = [];
 
 }

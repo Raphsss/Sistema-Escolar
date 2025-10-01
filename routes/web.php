@@ -7,3 +7,6 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', HomeController::class)->name('home');
 
 Route::resource('alunos', AlunoController::class);
+
+Route::resource('professores', AlunoController::class);
+

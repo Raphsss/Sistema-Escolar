@@ -8,7 +8,7 @@ use Illuminate\Http\Request;
 
 class AlunoController extends Controller
 {
-    /**
+    /*d
      * Display a listing of the resource.
      */
     public function index()
@@ -33,7 +33,7 @@ class AlunoController extends Controller
     public function store(Request $request)
     {
         $aluno = new Aluno();
-
+        
         $aluno->nome = $request->input('nome');
         $aluno->ra = $request->input('ra');
         $aluno->email = $request->input('email');
@@ -41,14 +41,6 @@ class AlunoController extends Controller
         $aluno->curso = $request->input('curso');
         $aluno->sexo = $request->input('sexo');
         $aluno->telefone = $request->input('telefone');
-
-
-        $validated = $request->validate([
-            'nome' => 'required|min:3|max:255',
-            'ra' => 'required|min:3|max:8',
-            'curso' => 'required|min:3|max:255',
-        ]);
-
         
         try {
             $aluno->save();
