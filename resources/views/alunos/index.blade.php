@@ -16,7 +16,7 @@
                 <tr class="text-left text-gray-400 border-b border-gray-800">
                     <th class="py-3 px-4">Nome</th>
                     <th class="py-3 px-4">RA</th>
-                    <th class="py-3 px-4">Curso</th>
+                    <th class="py-3 px-4">Turma</th>
                     <th class="py-3 px-4">Ações</th>
                 </tr>
             </thead>
@@ -25,7 +25,7 @@
                     <tr class="border-b border-gray-800 hover:bg-gray-800 transition">
                         <td class="py-2 px-4"><a href="{{ route('alunos.show', $aluno->id) }}" class="text-blue-400 hover:underline">{{  $aluno->nome }}</a></td>
                         <td class="py-2 px-4">{{ $aluno->ra }}</td>
-                        <td class="py-2 px-4">{{ $aluno->curso }}</td>
+                        <td class="py-2 px-4">{{ $aluno->turma }}</td>
                         <td class="py-2 px-4 flex gap-2">
                             <a href="{{ route('alunos.edit', $aluno->id) }}" class="px-3 py-1 rounded bg-blue-700 text-white text-xs font-semibold hover:bg-blue-800 transition">Atualizar</a>
                             <form action="{{ route('alunos.destroy', $aluno->id) }}" method="POST" style="display:inline;">

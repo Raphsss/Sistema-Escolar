@@ -13,9 +13,11 @@ return new class extends Migration
     {
         Schema::create('alunos', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('turma_id')->constrained('turmas')->onDelete('cascade');
             $table->string('nome', 100);
             $table->string('ra', 20)->unique();
             $table->string('email', 100)->unique();
+            $table->enum('sexo', ['Masculino', 'Feminino', 'Outro']);
             $table->date('data_nascimento')->nullable();
             $table->string('telefone', 20)->nullable();
             $table->timestamps();

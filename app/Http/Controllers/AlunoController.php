@@ -15,7 +15,7 @@ class AlunoController extends Controller
     {
         $aluno = new Aluno();
         $alunos = $aluno->all();
-    
+
         return view('alunos.index')->with('alunos', $alunos);
     }
 
@@ -32,20 +32,28 @@ class AlunoController extends Controller
      */
     public function store(Request $request)
     {
+        $validated = $request->validate([
+            'nome' => 'required|min:3|max:255',
+            'ra' => 'required|min:3|max:8',
+            'email' => 'required|email|unique:alunos,email',
+            'data_nascimento' => 'required|date',
+            'sexo' => 'required',
+            'telefone' => 'required|min:10|max:15',
+        ]);
+
         $aluno = new Aluno();
-        
-        $aluno->nome = $request->input('nome');
-        $aluno->ra = $request->input('ra');
-        $aluno->email = $request->input('email');
-        $aluno->data_nascimento = $request->input('data_nascimento');
-        $aluno->curso = $request->input('curso');
-        $aluno->sexo = $request->input('sexo');
-        $aluno->telefone = $request->input('telefone');
-        
+
+        $aluno->nome = $validated['nome'];
+        $aluno->ra = $validated['ra'];
+        $aluno->email = $validated['email'];
+        $aluno->data_nascimento = $validated['data_nascimento'];
+        $aluno->sexo = $validated['sexo'];
+        $aluno->telefone = $validated['telefone'];
+
         try {
             $aluno->save();
         } catch (Exception $e) {
-            throw new Exception('Não foi possivel cadastrar o aluno');
+            throw new Exception('Não foi possivel cadastrar o aluno ' . $e->getMessage());
         }
 
         return redirect()->route('alunos.index');
@@ -76,20 +84,23 @@ class AlunoController extends Controller
     public function update(Request $request, string $id)
     {
         $aluno = Aluno::find($id);
-
+        
+        $validated = $request->validate([
+            'nome' => 'required|min:3|max:255',
+            'ra' => 'required|min:3|max:8',
+            'email' => 'required|email|unique:alunos,email,' . $id,
+            'data_nascimento' => 'required|date',
+            'sexo' => 'required',
+            'telefone' => 'required|min:10|max:15',
+        ]);
+        
         $aluno->nome = $request->input('nome');
         $aluno->ra = $request->input('ra');
         $aluno->email = $request->input('email');
         $aluno->data_nascimento = $request->input('data_nascimento');
-        $aluno->curso = $request->input('curso');
         $aluno->sexo = $request->input('sexo');
         $aluno->telefone = $request->input('telefone');
 
-        $validated = $request->validate([
-            'nome' => 'required|min:3|max:255',
-            'ra' => 'required|min:3|max:8',
-            'curso' => 'required|min:3|max:255',
-        ]);
 
         try {
             $aluno->save();

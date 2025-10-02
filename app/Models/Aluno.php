@@ -11,4 +11,7 @@ class Aluno extends Model
     use HasFactory;
     protected $fillable = [];
 
+    public function turma() {
+        return $this->belongsTo(Turma::class);
+    }
 }
