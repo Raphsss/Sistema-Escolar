@@ -15,7 +15,7 @@
         <x-form-input type="email" label="E-mail" name="email" placeholder="email" :error="$errors->first('email')"
             value="{{ $aluno->email }}" />
 
-        <x-form-input type="date" label="Data nascimento" name="data_nascimento" placeholder="Data Nascimento"
+        <x-form-input type="date" label="Data nascimento" name="data_nascimento" placeholder="Data Nascimento"''
             value="{{ $aluno->data_nascimento }}" :error="$errors->first('data_nascimento')" />
 
         <x-form-select label="Sexo" name="sexo" :error="$errors->first('sexo')">

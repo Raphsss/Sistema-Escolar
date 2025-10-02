@@ -1,7 +1,7 @@
 <aside class="fixed top-0 left-0 h-screen w-64 bg-gray-950 text-gray-200 border-r border-gray-800 z-40 flex flex-col">
     <!-- Logo / título -->
     <div class="px-6 py-5 text-xl font-semibold tracking-wide border-b border-gray-800">
-        SisBiblioteca
+        SisEscolar
     </div>
 
     <!-- Menu -->
@@ -12,20 +12,11 @@
             :icon="'<path stroke-linecap=\'round\' stroke-linejoin=\'round\' stroke-width=\'2\' d=\'M17 20h5V4H2v16h5m10 0v-4a2 2 0 00-2-2H9a2 2 0 00-2 2v4h10z\' />'"
         />
         <x-sidebar-link 
-            href="#"
-            label="Livros"
+        href="{{ route('turmas.index') }}"
+            label="Turmas"
             :icon="'<path stroke-linecap=\'round\' stroke-linejoin=\'round\' stroke-width=\'2\' d=\'M12 6v6l4 2\' />'"
         />
-        <x-sidebar-link 
-            href="#"
-            label="Categorias"
-            :icon="'<path stroke-linecap=\'round\' stroke-linejoin=\'round\' stroke-width=\'2\' d=\'M3 7h18M3 12h18M3 17h18\' />'"
-        />
-        <x-sidebar-link 
-            href="#"
-            label="Autores"
-            :icon="'<path stroke-linecap=\'round\' stroke-linejoin=\'round\' stroke-width=\'2\' d=\'M5.121 17.804A4 4 0 1112 15v6\' />'"
-        />
+        
     </nav>
 
     <!-- Footer -->

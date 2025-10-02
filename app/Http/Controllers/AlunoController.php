@@ -94,18 +94,18 @@ class AlunoController extends Controller
             'telefone' => 'required|min:10|max:15',
         ]);
         
-        $aluno->nome = $request->input('nome');
-        $aluno->ra = $request->input('ra');
-        $aluno->email = $request->input('email');
-        $aluno->data_nascimento = $request->input('data_nascimento');
-        $aluno->sexo = $request->input('sexo');
-        $aluno->telefone = $request->input('telefone');
+        $aluno->nome = $validated['nome'];
+        $aluno->ra = $validated['ra'];
+        $aluno->email = $validated['email'];
+        $aluno->data_nascimento = $validated['data_nascimento'];
+        $aluno->sexo = $validated['sexo'];
+        $aluno->telefone = $validated['telefone'];
 
 
         try {
             $aluno->save();
         } catch (Exception $e) {
-            throw new Exception('Não foi possivel atualizar o aluno');
+            throw new Exception('Não foi possivel atualizar o aluno' . $e->getMessage());
         }
 
         return redirect()->route('alunos.index');
@@ -120,8 +120,8 @@ class AlunoController extends Controller
 
         try {
             $aluno->delete();
-        } catch (Exception) {
-            throw new Exception('Falha ao excluir aluno.');
+        } catch (Exception $e) {
+            throw new Exception('Falha ao excluir aluno: ' . $e->getMessage());
         }
 
         return redirect()->route('alunos.index');
