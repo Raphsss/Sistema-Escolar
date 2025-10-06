@@ -8,7 +8,7 @@ use Illuminate\Http\Request;
 
 class AlunoController extends Controller
 {
-    /*d
+    /*%
      * Display a listing of the resource.
      */
     public function index()

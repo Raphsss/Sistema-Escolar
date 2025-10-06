@@ -16,10 +16,10 @@
     </style>
 </head>
 
-<body class="bg-slate-800 text-gray-100">
+<body class="bg-slate-900 text-gray-100">
     <div class="flex min-h-screen">
         @include('includes.sidebar')
-        <main class="flex-1 bg-slate-800 ml-64">
+        <main class="flex-1 bg-slate-900 ml-64">
             @yield('content')
         </main>
     </div>
