@@ -54,7 +54,7 @@ class TurmaController extends Controller
     public function show(string $id)
     {
         $turma = Turma::findOrFail($id);
-        $alunos = $turma->alunos()->select('id', 'nome', 'ra')->get();
+        $alunos = $turma->alunos();
 
         return view('turmas.show', [
             'turma' => $turma,
