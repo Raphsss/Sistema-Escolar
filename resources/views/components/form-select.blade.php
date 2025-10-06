@@ -8,7 +8,7 @@
 <div class="space-y-2">
     @if ($label)
         <label for="{{ $id }}"
-            class="block text-sm font-medium {{ $error ? 'text-red-400' : 'text-gray-300' }}">
+            class="block text-xs font-medium {{ $error ? 'text-red-400' : 'text-zinc-400' }} uppercase tracking-wider">
             {{ $label }}
         </label>
     @endif
@@ -16,10 +16,10 @@
     <select name="{{ $name }}" id="{{ $id }}"
         {{ $attributes->merge([
             'class' =>
-                'w-full px-4 py-3 rounded-lg border transition-colors ' .
+                'w-full px-4 py-3 rounded-lg border transition-all duration-200 ' .
                 ($error
                     ? 'bg-red-50 border-red-500 text-red-900 focus:ring-red-500 focus:border-red-500'
-                    : 'bg-slate-800 text-gray-100 border-slate-600 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 hover:border-slate-500'),
+                    : 'bg-zinc-950 text-zinc-50 border-zinc-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 hover:border-zinc-600'),
         ]) }}
         aria-describedby="{{ $error ? $id . '-error' : '' }}">
         {{ $slot }}

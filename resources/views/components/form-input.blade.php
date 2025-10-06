@@ -5,12 +5,12 @@
 @endphp
 
 <div class="space-y-2">
-    <label for="{{ $id }}" class="block text-sm font-medium {{ $error ? 'text-red-400' : 'text-gray-300' }}">
+    <label for="{{ $id }}" class="block text-xs font-medium {{ $error ? 'text-red-400' : 'text-zinc-400' }} uppercase tracking-wider">
         {{ $label }}
     </label>
     <input type="{{ $type }}" name="{{ $name }}" id="{{ $id }}" value="{{ $value }}"
         aria-describedby="{{ $error ? $id . '-error' : '' }}"
-        class="w-full px-4 py-3 rounded-lg border transition-colors {{ $error ? 'bg-red-50 border-red-500 text-red-900 placeholder-red-700 focus:ring-red-500 focus:border-red-500' : 'bg-slate-800 text-gray-100 border-slate-600 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 hover:border-slate-500' }}"
+        class="w-full px-4 py-3 rounded-lg border transition-all duration-200 {{ $error ? 'bg-red-50 border-red-500 text-red-900 placeholder-red-700 focus:ring-red-500 focus:border-red-500' : 'bg-zinc-950 text-zinc-50 border-zinc-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 hover:border-zinc-600 placeholder-zinc-500' }}"
         placeholder="{{ $placeholder }}">
     @if ($error)
         <p id="{{ $id }}-error" class="text-sm text-red-400 flex items-center gap-1">
