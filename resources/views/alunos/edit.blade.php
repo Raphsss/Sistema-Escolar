@@ -1,32 +1,80 @@
 @extends('layouts.master')
 
-@section('title', 'Editar aluno')
-
+@section('title', 'Editar Aluno')
 
 @section('content')
-    <form action="{{ route('alunos.update', $aluno->id) }}" method="post"
-        class="max-w-md mx-auto bg-gray-900 p-8 rounded-xl shadow-lg flex flex-col gap-6">
-        @csrf
-        @method('PUT')
-        <x-form-input label="Nome" name="nome" placeholder="Nome" :error="$errors->first('nome')" value="{{ $aluno->nome }}" />
+    <div class="p-8">
+        <!-- Header -->
+        <div class="mb-8">
+            <div class="flex items-center gap-4 mb-2">
+                <a href="{{ route('alunos.index') }}"
+                    class="p-2 text-gray-400 hover:text-white hover:bg-slate-700 rounded-lg transition-colors">
+                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
+                    </svg>
+                </a>
+                <h1 class="text-3xl font-bold text-white">Editar Aluno</h1>
+            </div>
+            <p class="text-gray-400">Atualize os dados do aluno <span
+                    class="text-white font-medium">{{ $aluno->nome }}</span></p>
+        </div>
 
-        <x-form-input label="RA" name="ra" placeholder="RA" :error="$errors->first('ra')" value="{{ $aluno->ra }}" />
+        <!-- Formulário -->
+        <div class="max-w-2xl">
+            <form action="{{ route('alunos.update', $aluno->id) }}" method="post"
+                class="bg-slate-900 p-8 rounded-xl space-y-6">
+                @csrf
+                @method('PUT')
 
-        <x-form-input type="email" label="E-mail" name="email" placeholder="email" :error="$errors->first('email')"
-            value="{{ $aluno->email }}" />
+                <!-- Grid de campos -->
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div class="md:col-span-2">
+                        <x-form-input label="Nome completo" name="nome" placeholder="Digite o nome completo"
+                            :error="$errors->first('nome')" value="{{ $aluno->nome }}" />
+                    </div>
 
-        <x-form-input type="date" label="Data nascimento" name="data_nascimento" placeholder="Data Nascimento"''
-            value="{{ $aluno->data_nascimento }}" :error="$errors->first('data_nascimento')" />
+                    <x-form-input label="Registro Acadêmico (RA)" name="ra" placeholder="Ex: 202300123"
+                        :error="$errors->first('ra')" value="{{ $aluno->ra }}" />
 
-        <x-form-select label="Sexo" name="sexo" :error="$errors->first('sexo')">
-            <option value="Masculino" {{ ($aluno->sexo ?? old('sexo')) == 'Masculino' ? 'selected' : '' }}>Masculino</option>
-            <option value="Feminino" {{ ($aluno->sexo ?? old('sexo')) == 'Feminino' ? 'selected' : '' }}>Feminino</option>
-            <option value="Outro" {{ ($aluno->sexo ?? old('sexo')) == 'Outro' ? 'selected' : '' }}>Outro</option>
-        </x-form-select>
+                    <x-form-input type="email" label="E-mail" name="email" placeholder="exemplo@email.com"
+                        :error="$errors->first('email')" value="{{ $aluno->email }}" />
 
-        <x-form-input label="Telefone" name="telefone" placeholder="Telefone" :error="$errors->first('telefone')"
-            value="{{ $aluno->telefone }}" />
+                    <x-form-input type="date" label="Data de nascimento" name="data_nascimento"
+                        value="{{ $aluno->data_nascimento }}" :error="$errors->first('data_nascimento')" />
 
-        <x-button>Atualizar</x-button>
-    </form>
+                    <x-form-select label="Sexo" name="sexo" :error="$errors->first('sexo')">
+                        <option value="">Selecione uma opção</option>
+                        <option value="Masculino" {{ ($aluno->sexo ?? old('sexo')) == 'Masculino' ? 'selected' : '' }}>
+                            Masculino</option>
+                        <option value="Feminino" {{ ($aluno->sexo ?? old('sexo')) == 'Feminino' ? 'selected' : '' }}>
+                            Feminino</option>
+                        <option value="Outro" {{ ($aluno->sexo ?? old('sexo')) == 'Outro' ? 'selected' : '' }}>Outro
+                        </option>
+                    </x-form-select>
+
+                    <div class="md:col-span-2">
+                        <x-form-input label="Telefone" name="telefone" placeholder="(11) 99999-9999" :error="$errors->first('telefone')"
+                            value="{{ $aluno->telefone }}" />
+                    </div>
+                </div>
+
+                <!-- Botões de ação -->
+                <div class="flex gap-4 pt-6">
+                    <a href="{{ route('alunos.index') }}"
+                        class="flex-1 py-3 px-4 bg-slate-700 text-gray-300 font-medium rounded-lg hover:bg-slate-600 transition-colors text-center">
+                        Cancelar
+                    </a>
+                    <div class="flex-1">
+                        <x-button>
+                            <svg class="w-5 h-5 mr-2 inline" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-8l-4-4m0 0L8 8m4-4v12" />
+                            </svg>
+                            Atualizar Dados
+                        </x-button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
 @endsection
