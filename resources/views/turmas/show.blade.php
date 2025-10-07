@@ -44,11 +44,12 @@
                 <!-- Informações da Turma -->
                 <div class="bg-zinc-900 border border-zinc-800 rounded-xl p-8">
                     <h2 class="text-sm font-medium text-zinc-400 uppercase tracking-wider mb-8">Informações da Turma</h2>
-                    
+
                     <div class="space-y-8">
                         <div class="grid grid-cols-2 gap-8">
                             <div>
-                                <label class="block text-xs text-zinc-500 uppercase tracking-wider mb-2">Nome da Turma</label>
+                                <label class="block text-xs text-zinc-500 uppercase tracking-wider mb-2">Nome da
+                                    Turma</label>
                                 <p class="text-zinc-50 text-base">{{ $turma->nome }}</p>
                             </div>
 
@@ -60,19 +61,47 @@
                     </div>
                 </div>
 
-                <!-- Alunos da Turma (Placeholder) -->
+                <!-- Alunos da Turma -->
                 <div class="bg-zinc-900 border border-zinc-800 rounded-xl p-8">
-                    <h2 class="text-sm font-medium text-zinc-400 uppercase tracking-wider mb-6">Alunos Matriculados</h2>
-                    
-                    <div class="flex items-center justify-center py-12">
-                        <div class="text-center">
-                            <svg class="w-12 h-12 text-zinc-700 mx-auto mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
-                                    d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197m13.5-9a2.5 2.5 0 11-5 0 2.5 2.5 0 015 0z" />
-                            </svg>
-                            <p class="text-zinc-500 text-sm">Nenhum aluno matriculado nesta turma</p>
-                        </div>
+                    <div class="flex items-center justify-between mb-6">
+                        <h2 class="text-sm font-medium text-zinc-400 uppercase tracking-wider">Alunos Matriculados</h2>
+                        <span class="px-3 py-1 bg-zinc-800 text-zinc-300 text-xs font-medium rounded-full">
+                            {{ $turma->alunos->count() }} {{ $turma->alunos->count() === 1 ? 'aluno' : 'alunos' }}
+                        </span>
                     </div>
+
+                    @if ($turma->alunos->isEmpty())
+                        <div class="flex items-center justify-center py-12">
+                            <div class="text-center">
+                                <svg class="w-12 h-12 text-zinc-700 mx-auto mb-4" fill="none" stroke="currentColor"
+                                    viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
+                                        d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197m13.5-9a2.5 2.5 0 11-5 0 2.5 2.5 0 015 0z" />
+                                </svg>
+                                <p class="text-zinc-500 text-sm">Nenhum aluno matriculado nesta turma</p>
+                            </div>
+                        </div>
+                    @else
+                        <div class="space-y-3">
+                            @foreach ($turma->alunos as $aluno)
+                                <div
+                                    class="flex items-center justify-between p-4 bg-zinc-800/50 hover:bg-zinc-800 border border-zinc-700/50 rounded-lg transition-all duration-200 group">
+                                    <div class="flex items-center gap-4">
+                                        <div>
+                                            <h3 class="text-zinc-50 font-medium text-sm">{{ $aluno->nome }}</h3>
+                                            <p class="text-zinc-500 text-xs mt-0.5">Matrícula: {{ $aluno->matricula }}</p>
+                                        </div>
+                                    </div>
+
+                                    <a href="{{ route('alunos.show', $aluno->id) }}"
+                                        class="opacity-0 group-hover:opacity-100 px-3 py-1.5 bg-zinc-700 hover:bg-indigo-600 text-zinc-300 hover:text-white text-xs font-medium rounded-lg transition-all duration-200">
+                                        Ver perfil
+                                    </a>
+                                </div>
+                            @endforeach
+
+                        </div>
+                    @endif
                 </div>
             </div>
 

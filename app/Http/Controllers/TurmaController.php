@@ -53,7 +53,7 @@ class TurmaController extends Controller
      */
     public function show(string $id)
     {
-        $turma = Turma::findOrFail($id);
+        $turma = Turma::with('alunos')->findOrFail($id);
         $alunos = $turma->alunos();
 
         return view('turmas.show', [

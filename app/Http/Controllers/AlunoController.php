@@ -39,6 +39,7 @@ class AlunoController extends Controller
             'data_nascimento' => 'required|date',
             'sexo' => 'required',
             'telefone' => 'required|min:10|max:15',
+            'turma' => 'required'
         ]);
 
         $aluno = new Aluno();
@@ -49,7 +50,7 @@ class AlunoController extends Controller
         $aluno->data_nascimento = $validated['data_nascimento'];
         $aluno->sexo = $validated['sexo'];
         $aluno->telefone = $validated['telefone'];
-        $aluno->turma_id = 1;
+        $aluno->turma_id = $validated['turma'];
 
         try {
             $aluno->save();
@@ -64,7 +65,7 @@ class AlunoController extends Controller
      */
     public function show(string $id)
     {
-        $aluno = Aluno::with('turma')->find($id);
+        $aluno = Aluno::with('turma')->findOrFail($id);
 
         //dd($aluno);
         return view('alunos.show')->with('aluno', $aluno);
@@ -118,7 +119,7 @@ class AlunoController extends Controller
      */
     public function destroy(string $id)
     {
-        $aluno = Aluno::find($id);
+        $aluno = Aluno::findOrFail($id);
 
         try {
             $aluno->delete();

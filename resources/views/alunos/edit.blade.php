@@ -34,8 +34,8 @@
                     </div>
 
                     <div class="grid grid-cols-2 gap-6">
-                        <x-form-input label="Registro Acadêmico" name="ra" placeholder="202300123"
-                            :error="$errors->first('ra')" value="{{ $aluno->ra }}" />
+                        <x-form-input label="Registro Acadêmico" name="ra" placeholder="202300123" :error="$errors->first('ra')"
+                            value="{{ $aluno->ra }}" />
 
                         <x-form-input type="email" label="E-mail" name="email" placeholder="aluno@email.com"
                             :error="$errors->first('email')" value="{{ $aluno->email }}" />
@@ -47,16 +47,23 @@
 
                         <x-form-select label="Sexo" name="sexo" :error="$errors->first('sexo')">
                             <option value="">Selecione</option>
-                            <option value="Masculino" {{ ($aluno->sexo ?? old('sexo')) == 'Masculino' ? 'selected' : '' }}>Masculino</option>
-                            <option value="Feminino" {{ ($aluno->sexo ?? old('sexo')) == 'Feminino' ? 'selected' : '' }}>Feminino</option>
-                            <option value="Outro" {{ ($aluno->sexo ?? old('sexo')) == 'Outro' ? 'selected' : '' }}>Outro</option>
+                            <option value="Masculino" {{ ($aluno->sexo ?? old('sexo')) == 'Masculino' ? 'selected' : '' }}>
+                                Masculino</option>
+                            <option value="Feminino" {{ ($aluno->sexo ?? old('sexo')) == 'Feminino' ? 'selected' : '' }}>
+                                Feminino</option>
+                            <option value="Outro" {{ ($aluno->sexo ?? old('sexo')) == 'Outro' ? 'selected' : '' }}>Outro
+                            </option>
                         </x-form-select>
+
+                        <x-form-input label="Turma" name="turma" placeholder="" :error="$errors->first('turma')"
+                            value="{{ old('turma') }}" />
+                            
+                        <div>
+                            <x-form-input label="Telefone" name="telefone" placeholder="(11) 99999-9999" :error="$errors->first('telefone')"
+                                value="{{ $aluno->telefone }}" />
+                        </div>
                     </div>
 
-                    <div>
-                        <x-form-input label="Telefone" name="telefone" placeholder="(11) 99999-9999"
-                            :error="$errors->first('telefone')" value="{{ $aluno->telefone }}" />
-                    </div>
                 </div>
 
                 <!-- Ações -->
