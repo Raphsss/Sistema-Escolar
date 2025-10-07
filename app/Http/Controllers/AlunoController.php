@@ -49,6 +49,7 @@ class AlunoController extends Controller
         $aluno->data_nascimento = $validated['data_nascimento'];
         $aluno->sexo = $validated['sexo'];
         $aluno->telefone = $validated['telefone'];
+        $aluno->turma_id = 1;
 
         try {
             $aluno->save();
@@ -63,8 +64,9 @@ class AlunoController extends Controller
      */
     public function show(string $id)
     {
-        $aluno = Aluno::find($id);
+        $aluno = Aluno::with('turma')->find($id);
 
+        //dd($aluno);
         return view('alunos.show')->with('aluno', $aluno);
     }
 

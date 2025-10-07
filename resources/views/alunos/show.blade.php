@@ -4,11 +4,11 @@
 
 @section('content')
     <div class="p-12">
-        <!-- Header Espaçoso -->
         <div class="mb-12">
             <div class="flex items-start justify-between">
                 <div class="flex items-start gap-6">
-                    <a href="{{ route('alunos.index') }}"
+                    <!--  Seta para voltar  -->
+                    <a href="javascript:history.back()"
                         class="mt-1 p-2 text-zinc-400 hover:text-zinc-200 hover:bg-zinc-800 rounded-lg transition-all duration-200">
                         <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M15 19l-7-7 7-7" />
@@ -106,14 +106,10 @@
 
                             <div>
                                 <label class="block text-xs text-zinc-500 uppercase tracking-wider mb-2">Turma</label>
-                                <p class="text-zinc-50 text-base">{{ $aluno->turma ?? '—' }}</p>
+                                <p class="text-zinc-50 text-base">{{ $aluno->turma->nome ?? '—' }}</p>
                             </div>
                         </div>
 
-                        <div>
-                            <label class="block text-xs text-zinc-500 uppercase tracking-wider mb-2">Curso</label>
-                            <p class="text-zinc-50 text-base">{{ $aluno->curso ?? '—' }}</p>
-                        </div>
                     </div>
                 </div>
             </div>
@@ -145,7 +141,7 @@
                         </p>
                     </div>
 
-                    <div class="pt-6 border-t border-zinc-800">
+                     <div class="pt-6 border-t border-zinc-800">
                         <label class="block text-xs text-zinc-500 uppercase tracking-wider mb-2">ID do Sistema</label>
                         <p class="text-zinc-400 text-sm font-mono">#{{ str_pad($aluno->id, 6, '0', STR_PAD_LEFT) }}</p>
                     </div>

@@ -61,7 +61,7 @@
 
                 <!-- Ações -->
                 <div class="flex gap-4 mt-10 pt-8 border-t border-zinc-800">
-                    <a href="{{ route('alunos.index') }}"
+                    <a href="javascript:history.back()"
                         class="flex-1 py-3 text-center text-zinc-300 hover:text-zinc-50 text-sm font-medium rounded-lg border border-zinc-700 hover:border-zinc-600 transition-all duration-200">
                         Cancelar
                     </a>

@@ -8,10 +8,15 @@ use Illuminate\Database\Eloquent\Model;
 class Turma extends Model
 {
     use HasFactory;
-    protected $fillable = [];
+    protected $fillable = [
+        'nome',
+        'codigo'
+    ];
 
     public function alunos()
     {
         return $this->hasMany(Aluno::class);
     }
+
+
 }

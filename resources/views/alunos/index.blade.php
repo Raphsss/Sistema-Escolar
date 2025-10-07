@@ -22,7 +22,7 @@
             <div class="grid grid-cols-12 gap-8 px-8 py-4 bg-zinc-900/50 border-b border-zinc-800">
                 <div class="col-span-4 text-xs font-medium text-zinc-500 uppercase tracking-wider">Aluno</div>
                 <div class="col-span-3 text-xs font-medium text-zinc-500 uppercase tracking-wider">Matrícula</div>
-                <div class="col-span-3 text-xs font-medium text-zinc-500 uppercase tracking-wider">Turma</div>
+                <div class="col-span-3 text-xs font-medium text-zinc-500 uppercase tracking-wider">Cod. Turma</div>
                 <div class="col-span-2 text-xs font-medium text-zinc-500 uppercase tracking-wider text-right">Ações</div>
             </div>
 
@@ -42,7 +42,7 @@
                     </div>
 
                     <div class="col-span-3 flex items-center">
-                        <span class="text-zinc-300">{{ $aluno->turma ?? '—' }}</span>
+                        <span class="text-zinc-300">{{ $aluno->turma->codigo ?? '—' }}</span>
                     </div>
 
                     <div class="col-span-2 flex items-center justify-end gap-3">
