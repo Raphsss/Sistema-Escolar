@@ -22,7 +22,7 @@ class ProfessorController extends Controller
     {
         $professor =  new Professor();
 
-        $professor->nome = "Raimundo";
+        $professor->nome = "Marcos";
 
         $professor->save();
     }

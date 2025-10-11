@@ -54,10 +54,18 @@
                             <option value="Outro" {{ ($aluno->sexo ?? old('sexo')) == 'Outro' ? 'selected' : '' }}>Outro
                             </option>
                         </x-form-select>
+             
+                        <x-form-select label="Turma" name="turma" :error="$errors->first('turma')">
+                            <option value="">Selecione uma turma</option>
+                            @foreach ($turmas as $turma)
+                                <option value="{{ $turma->id }}"
+                                    {{ old('turma_id', $aluno->turma_id) == $turma->id ? 'selected' : '' }}>
+                                    {{ $turma->codigo }}
+                                </option>
+                            @endforeach
+                        </x-form-select>
 
-                        <x-form-input label="Turma" name="turma" placeholder="" :error="$errors->first('turma')"
-                            value="{{ old('turma') }}" />
-                            
+
                         <div>
                             <x-form-input label="Telefone" name="telefone" placeholder="(11) 99999-9999" :error="$errors->first('telefone')"
                                 value="{{ $aluno->telefone }}" />

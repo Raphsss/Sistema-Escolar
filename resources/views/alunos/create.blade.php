@@ -58,8 +58,15 @@
                     </div>
 
                     <div>
-                        <x-form-input label="Turma" name="turma" placeholder="" :error="$errors->first('turma')"
-                            value="{{ old('') }}" />
+                        <x-form-select label="Turma" name="turma" :error="$errors->first('turma')">
+                            <option value="">Selecione uma turma</option>
+                            @foreach ($turmas as $turma)
+                                <option value="{{ $turma->id }}"
+                                    {{ old('turma_id') == $turma->id ? 'selected' : '' }}>
+                                    {{ $turma->codigo }}
+                                </option>
+                            @endforeach
+                        </x-form-select>
                     </div>
                 </div>
 

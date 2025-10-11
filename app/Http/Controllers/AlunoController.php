@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Aluno;
+use App\Models\Turma;
 use Exception;
 use Illuminate\Http\Request;
 
@@ -24,7 +25,9 @@ class AlunoController extends Controller
      */
     public function create()
     {
-        return view('alunos.create');
+        $turmas = (new Turma())->all();
+
+        return view('alunos.create')->with('turmas', $turmas);
     }
 
     /**
@@ -77,8 +80,12 @@ class AlunoController extends Controller
     public function edit(string $id)
     {
         $aluno = Aluno::find($id);
+        $turmas = (new Turma())->all();
 
-        return view('alunos.edit')->with('aluno', $aluno);
+        return view('alunos.edit', [
+            'aluno' => $aluno,
+            'turmas' => $turmas
+        ]);
     }
 
     /**
@@ -95,6 +102,7 @@ class AlunoController extends Controller
             'data_nascimento' => 'required|date',
             'sexo' => 'required',
             'telefone' => 'required|min:10|max:15',
+            'turma' => 'required'
         ]);
         
         $aluno->nome = $validated['nome'];
