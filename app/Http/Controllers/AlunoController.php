@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\updateUserRequest;
 use App\Models\Aluno;
 use App\Models\Turma;
 use Exception;
@@ -91,27 +92,11 @@ class AlunoController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(updateUserRequest $request, string $id)
     {
         $aluno = Aluno::find($id);
         
-        $validated = $request->validate([
-            'nome' => 'required|min:3|max:255',
-            'ra' => 'required|min:3|max:8',
-            'email' => 'required|email|unique:alunos,email,' . $id,
-            'data_nascimento' => 'required|date',
-            'sexo' => 'required',
-            'telefone' => 'required|min:10|max:15',
-            'turma' => 'required'
-        ]);
-        
-        $aluno->nome = $validated['nome'];
-        $aluno->ra = $validated['ra'];
-        $aluno->email = $validated['email'];
-        $aluno->data_nascimento = $validated['data_nascimento'];
-        $aluno->sexo = $validated['sexo'];
-        $aluno->telefone = $validated['telefone'];
-
+        $aluno->fill($request->validated());
 
         try {
             $aluno->save();
