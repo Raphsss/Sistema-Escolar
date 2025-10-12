@@ -19,6 +19,6 @@ class Aluno extends Model
     ];
 
     public function turma() {
-        return $this->belongsTo(Turma::class);
+        return $this->belongsTo(Turma::class)->orderBy('nome', 'asc');
     }
 }
