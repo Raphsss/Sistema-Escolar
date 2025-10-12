@@ -8,7 +8,7 @@ use Illuminate\Validation\Rule;
 /**
  * @method mixed route(string|null $param = null, mixed $default = null)
  */
-class updateUserRequest extends FormRequest
+class storeUserRequest extends FormRequest
 {
     public function authorize(): bool
     {
@@ -20,11 +20,7 @@ class updateUserRequest extends FormRequest
         return [
             'nome' => 'required|min:3|max:255',
             'ra' => 'required|min:3|max:8',
-            'email' => [
-                'required',
-                'email',
-                Rule::unique('alunos', 'email')->ignore($this->route('aluno'))
-            ],
+            'email' => 'required|email|unique:alunos,email',
             'data_nascimento' => 'required|date',
             'sexo' => 'required',
             'telefone' => 'required|min:10|max:15',

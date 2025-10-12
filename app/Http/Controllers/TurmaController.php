@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\storeTurmaRequest;
+use App\Http\Requests\updateTurmaRequest;
 use App\Models\Turma;
 use Exception;
 use Illuminate\Http\Request;
@@ -54,12 +56,8 @@ class TurmaController extends Controller
     public function show(string $id)
     {
         $turma = Turma::with('alunos')->findOrFail($id);
-        $alunos = $turma->alunos();
 
-        return view('turmas.show', [
-            'turma' => $turma,
-            'alunos' => $alunos,
-        ]);
+        return view('turmas.show')->with('turma', $turma);
     }
 
     /**
@@ -74,17 +72,11 @@ class TurmaController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(updateTurmaRequest $request, string $id)
     {
         $turma = Turma::findOrFail($id);
 
-        $validated = $request->validate([
-            'nome' => 'required|min:3|max:100',
-            'codigo' => 'required|min:3|max:15|unique:turmas,codigo,' . $id,
-        ]);
-
-        $turma->nome = $validated['nome'];
-        $turma->codigo = $validated['codigo'];
+        $turma->fill($request->validated());
 
         try {
             $turma->save();

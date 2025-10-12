@@ -15,7 +15,7 @@ class Turma extends Model
 
     public function alunos()
     {
-        return $this->hasMany(Aluno::class);
+        return $this->hasMany(Aluno::class)->orderBy('nome', 'asc');
     }
 
 

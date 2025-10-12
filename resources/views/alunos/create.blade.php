@@ -62,7 +62,7 @@
                             <option value="">Selecione uma turma</option>
                             @foreach ($turmas as $turma)
                                 <option value="{{ $turma->id }}"
-                                    {{ old('turma_id') == $turma->id ? 'selected' : '' }}>
+                                    {{ old('turma') == $turma->id ? 'selected' : '' }}>
                                     {{ $turma->codigo }}
                                 </option>
                             @endforeach

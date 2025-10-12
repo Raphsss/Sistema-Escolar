@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\storeUserRequest;
 use App\Http\Requests\updateUserRequest;
 use App\Models\Aluno;
 use App\Models\Turma;
@@ -34,27 +35,12 @@ class AlunoController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(storeUserRequest $request)
     {
-        $validated = $request->validate([
-            'nome' => 'required|min:3|max:255',
-            'ra' => 'required|min:3|max:8',
-            'email' => 'required|email|unique:alunos,email',
-            'data_nascimento' => 'required|date',
-            'sexo' => 'required',
-            'telefone' => 'required|min:10|max:15',
-            'turma' => 'required'
-        ]);
-
         $aluno = new Aluno();
 
-        $aluno->nome = $validated['nome'];
-        $aluno->ra = $validated['ra'];
-        $aluno->email = $validated['email'];
-        $aluno->data_nascimento = $validated['data_nascimento'];
-        $aluno->sexo = $validated['sexo'];
-        $aluno->telefone = $validated['telefone'];
-        $aluno->turma_id = $validated['turma'];
+        $aluno->fill($request->validated());
+        $aluno->turma_id = $request['turma'];
 
         try {
             $aluno->save();
@@ -71,7 +57,6 @@ class AlunoController extends Controller
     {
         $aluno = Aluno::with('turma')->findOrFail($id);
 
-        //dd($aluno);
         return view('alunos.show')->with('aluno', $aluno);
     }
 
