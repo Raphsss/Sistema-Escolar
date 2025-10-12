@@ -26,7 +26,7 @@ class AlunoController extends Controller
      */
     public function create()
     {
-        $turmas = (new Turma())->all();
+        $turmas = Turma::all();
 
         return view('alunos.create')->with('turmas', $turmas);
     }
@@ -65,7 +65,7 @@ class AlunoController extends Controller
     public function edit(string $id)
     {
         $aluno = Aluno::find($id);
-        $turmas = (new Turma())->all();
+        $turmas = Turma::all();
 
         return view('alunos.edit', [
             'aluno' => $aluno,

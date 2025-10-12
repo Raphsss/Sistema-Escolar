@@ -16,6 +16,7 @@ class TurmaController extends Controller
     public function index()
     {
         $turmas = Turma::all();
+        
         return view('turmas.index')->with('turmas', $turmas);
     }
 
@@ -30,16 +31,11 @@ class TurmaController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(storeTurmaRequest $request)
     {
-        $validated = $request->validate([
-            'nome' => 'required|min:3|max:100',
-            'codigo' => 'required|min:3|max:15|unique:turmas,codigo'
-        ]);
-
         $turma = new Turma();
-        $turma->nome = $validated['nome'];
-        $turma->codigo = $validated['codigo'];
+        
+        $turma->fill($request->validated());
 
         try {
             $turma->save();
@@ -66,6 +62,7 @@ class TurmaController extends Controller
     public function edit(string $id)
     {
         $turma = Turma::findOrFail($id);
+        
         return view('turmas.edit')->with('turma', $turma);
     }
 
