@@ -18,5 +18,7 @@ class Turma extends Model
         return $this->hasMany(Aluno::class)->orderBy('nome', 'asc');
     }
 
-
+    public function Professores(){
+        return $this->belongsToMany(Professor::class)->orderBy('nome', 'asc');
+    }
 }

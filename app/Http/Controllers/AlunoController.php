@@ -78,7 +78,7 @@ class AlunoController extends Controller
      */
     public function update(updateUserRequest $request, string $id)
     {
-        $aluno = Aluno::find($id);
+        $aluno = Aluno::findOrFail($id);
         
         $aluno->fill($request->validated());
 

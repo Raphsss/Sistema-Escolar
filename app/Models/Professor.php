@@ -11,4 +11,16 @@ class Professor extends Model
      * @var string
     */
     protected $table = 'professores';
+
+    protected $fillable = [
+        'nome',
+    ];
+
+    function Turmas(){
+        return $this->belongsToMany(Turma::class)->orderBy('nome', 'asc');
+    }
+
+    function Disciplinas(){
+        return $this->belongsToMany(Disciplina::class)->orderBy('nome', 'asc');
+    }
 }
