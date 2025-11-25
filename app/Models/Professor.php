@@ -15,7 +15,7 @@ class Professor extends Model
     protected $fillable = [
         'nome',
     ];
-
+    
     function Turmas(){
         return $this->belongsToMany(Turma::class)->orderBy('nome', 'asc');
     }

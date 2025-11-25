@@ -20,11 +20,7 @@ class ProfessorController extends Controller
      */
     public function create()
     {
-        $professor =  new Professor();
-
-        $professor->nome = "Marcos";
-
-        $professor->save();
+        //
     }
 
     /**
