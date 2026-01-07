@@ -1,6 +1,4 @@
-# Biblioteca App
-
- Projeto simples de CRUD para treinar Laravel.
+Sistema para gestão escolar (WIP).
 
 ## Requisitos
 
